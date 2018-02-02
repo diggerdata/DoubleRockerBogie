@@ -44,7 +44,7 @@ return new ICadGenerator(){
 			allCad.add(wheel)
 			*/
 			int scale = conf.getScale()
-			CSG tire = new Cylinder(45*scale,45*scale,30*scale,(int)30)
+			CSG tire = new Cylinder(dh.getR(),dh.getR(),30*scale,(int)30)
 					.toCSG()
 					.movex(-dh.getR())
 					.movez(-dh.getD())
