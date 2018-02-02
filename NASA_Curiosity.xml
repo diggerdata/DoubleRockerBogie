@@ -1,11 +1,11 @@
 <root>
 <mobilebase>
 	<cadEngine>
-		<git>https://github.com/NeuronRobotics/NASACurisoity.git</git>
+		<git>https://github.com/diggerdata/DoubleRockerBogie.git</git>
 		<file>bodyCad.groovy</file>
 	</cadEngine>
 	<driveEngine>
-		<git>https://github.com/NeuronRobotics/NASACurisoity.git</git>
+		<git>https://github.com/diggerdata/DoubleRockerBogie.git</git>
 		<file>DriveEngine.groovy</file>
 	</driveEngine>
 
@@ -14,7 +14,7 @@
 
 <name>RobotArm</name>
 	<cadEngine>
-		<git>https://github.com/NeuronRobotics/NASACurisoity.git</git>
+		<git>https://github.com/diggerdata/DoubleRockerBogie.git</git>
 		<file>armCad.groovy</file>
 	</cadEngine>
 	<kinematics>
@@ -263,7 +263,7 @@
 
 <name>Front_Left</name>
 	<cadEngine>
-		<git>https://github.com/NeuronRobotics/NASACurisoity.git</git>
+		<git>https://github.com/diggerdata/DoubleRockerBogie.git</git>
 		<file>steer_wheel.groovy</file>
 	</cadEngine>
 	<kinematics>
@@ -404,7 +404,7 @@
 
 <name>Back_Left</name>
 	<cadEngine>
-		<git>https://github.com/NeuronRobotics/NASACurisoity.git</git>
+		<git>https://github.com/diggerdata/DoubleRockerBogie.git</git>
 		<file>steer_wheel.groovy</file>
 	</cadEngine>
 	<kinematics>
@@ -545,7 +545,7 @@
 
 <name>Back_Right</name>
 	<cadEngine>
-		<git>https://github.com/NeuronRobotics/NASACurisoity.git</git>
+		<git>https://github.com/diggerdata/DoubleRockerBogie.git</git>
 		<file>steer_wheel.groovy</file>
 	</cadEngine>
 	<kinematics>
@@ -686,7 +686,7 @@
 
 <name>Front_Right</name>
 	<cadEngine>
-		<git>https://github.com/NeuronRobotics/NASACurisoity.git</git>
+		<git>https://github.com/diggerdata/DoubleRockerBogie.git</git>
 		<file>steer_wheel.groovy</file>
 	</cadEngine>
 	<kinematics>
@@ -827,7 +827,7 @@
 
 <name>Center_Left</name>
 	<cadEngine>
-		<git>https://github.com/NeuronRobotics/NASACurisoity.git</git>
+		<git>https://github.com/diggerdata/DoubleRockerBogie.git</git>
 		<file>fixed_wheel.groovy</file>
 	</cadEngine>
 	<kinematics>
