@@ -914,7 +914,7 @@
 
 <name>Center_Right</name>
 	<cadEngine>
-		<git>https://github.com/NeuronRobotics/NASACurisoity.git</git>
+		<git>https://github.com/diggerdata/DoubleRockerBogie.git</git>
 		<file>fixed_wheel.groovy</file>
 	</cadEngine>
 	<kinematics>
