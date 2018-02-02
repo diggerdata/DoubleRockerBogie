@@ -26,12 +26,12 @@ return new ICadGenerator(){
 
 
 		if (linkIndex==0){
-			File wheel_file = ScriptingEngine.fileFromGit(
-			"https://github.com/NeuronRobotics/NASACurisoity.git",
-			"STL/wheel.STL");
-			File tire_file = ScriptingEngine.fileFromGit(
-			"https://github.com/NeuronRobotics/NASACurisoity.git",
-			"STL/tire.STL");
+			// File wheel_file = ScriptingEngine.fileFromGit(
+			// "https://github.com/NeuronRobotics/NASACurisoity.git",
+			// "STL/wheel.STL");
+			// File tire_file = ScriptingEngine.fileFromGit(
+			// "https://github.com/NeuronRobotics/NASACurisoity.git",
+			// "STL/tire.STL");
 			/*
 			CSG wheel = Vitamins.get(wheel_file)
 			wheel=wheel			
@@ -43,7 +43,9 @@ return new ICadGenerator(){
 			
 			allCad.add(wheel)
 			*/
-			CSG tire = Vitamins.get(tire_file)
+			int scale = conf.getScale()
+			CSG tire = new Cylinder(45*scale,45*scale,30*scale,(int)30)
+					.toCSG()
 					.movex(-dh.getR())
 					.movez(-dh.getD())
 

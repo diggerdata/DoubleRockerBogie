@@ -53,7 +53,8 @@ return new ICadGenerator(){
 			
 			allCad.add(wheel)
 			*/
-			CSG tire = Vitamins.get(tire_file)
+			CSG tire =new Cylinder(10,10,5,(int)30)
+					.toCSG()
 					.movex(-dh.getR())
 					.movez(-dh.getD())
 			tire.setManipulator(manipulator)
