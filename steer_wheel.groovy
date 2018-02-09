@@ -53,12 +53,24 @@ return new ICadGenerator(){
 			
 			allCad.add(wheel)
 			*/
-			CSG tire =new Cylinder(20,20,10,(int)30)
-					.toCSG()
-					.rotx(-90)
-					.movex(-dh.getR())
-					.movez(-dh.getD())
+			int height = 10
+			CSG tire =new Cylinder(20,20,height,(int)30)
+				.toCSG()
+				.rotx(-90)
+				.movex(-dh.getR())
+				.movez(-dh.getD())
+			
+			CSG axleHole = new Cube(3.175, 3.175, height*2)
+				.toCSG()
+				.rotx(-90)
+				.movex(-dh.getR())
+				.movez(-dh.getD())
+			
+			tire = tire.difference(axleHole)
+
 			tire.setManipulator(manipulator)
+
+			
 
 			allCad.add(tire)
 		}
