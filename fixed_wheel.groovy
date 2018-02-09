@@ -43,14 +43,50 @@ return new ICadGenerator(){
 			
 			allCad.add(wheel)
 			*/
-			int scale = conf.getScale()
-			CSG tire = new Cylinder(dh.getR(),dh.getR(),30*scale,(int)30)
+			double gearThickness = 3
+			
+			List<Object> bevelGears = (List<Object>)ScriptingEngine
+				.gitScriptRun(
+				"https://github.com/madhephaestus/GearGenerator.git", // git location of the library
+				"bevelGear.groovy" , // file to load
+				// Parameters passed to the funcetion
+				[	18,// Number of teeth gear a
+					18,// Number of teeth gear b
+					gearThickness,// thickness of gear A
+					2,// gear pitch in arch length mm
+					90
+				]
+            )
+			CSG tire = new Cylinder(dh.getR(),dh.getR(),10,(int)30)
 					.toCSG()
+					.rotx(90)
 					.movex(-dh.getR())
 					.movez(-dh.getD())
+			CSG axleHole = new Cube(3.175, 3.175, dh.getR()*2)
+				.toCSG()
+				.rotx(-90)
+				.movex(-dh.getR())
+				.movez(-dh.getD())
 
+			CSG axleHole2 = new Cube(3.175, 3.175, dh.getR()*2)
+				.toCSG()
+				// .rotx(-90)
+				.movex(-dh.getR())
+				.movez(-dh.getD())
+			
+			gears= [bevelGears.get(0),bevelGears.get(1)]
+			tire = tire.difference(axleHole).movey(-bevelGears.get(2)*2)
+
+			gears[0] = gears[0].rotx(180).movez(-dh.getD()+bevelGears.get(2)).movex(-dh.getR()).difference(axleHole2)
+			gears[1] = gears[1].rotz(-90).movez(dh.getD()-bevelGears.get(2)).movex(-dh.getR()).difference(axleHole)
+
+			gears[0].setManipulator(manipulator)
+			gears[1].setManipulator(manipulator)
 			tire.setManipulator(manipulator)
+			
 
+			allCad.add(gears[0])
+			allCad.add(gears[1])
 			allCad.add(tire)
 		}
 		for(int i=0;i<allCad.size();i++){
