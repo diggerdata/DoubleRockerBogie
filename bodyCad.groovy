@@ -58,10 +58,10 @@ return new ICadGenerator(){
 		double lowerHingeOffset = 1
 		*/
 		double widthOfBody =43
+		double lengthOfBody = 170
 	
 		// Load the .CSG from the disk and cache it in memory
-		CSG body  = Vitamins.get(mainBodyFile)
-
+		CSG body  = new Cube(lengthOfBody,widthOfBody*2,10).toCSG().movez(widthOfBody)
 		CSG USP1R  = Vitamins.get(USP1R_file).movey(widthOfBody)
 		CSG LSP1R  = Vitamins.get(LSP1R_file).movey(widthOfBody)
 		CSG USP2R  = Vitamins.get(USP2R_file).movey(widthOfBody)
