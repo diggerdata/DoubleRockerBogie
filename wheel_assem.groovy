@@ -2,22 +2,24 @@
 makeWheelAssem()
 // wheel(60, 25)
 // axleNub(6.25, 8, 15)
-// gear(42, 20, 10, 5)
+//drivenGear(42, 20, 10, 5)
 
 List<Object>  makeWheelAssem(){
     int thickness = 12
-	CSG top = topGuard(200, thickness)
-    CSG bottom = topGuard(200, thickness).rotx(180)
-    bottom = bottom.movez(thickness*2+37)
+	CSG top = plate(200, thickness)
+	CSG servo = Vitamins.get("hobbyServo","hv6214mg").rotx(180).rotz(-90)
+	servo = servo.movez(thickness*2+37).movex(52.5)
+    CSG bottom = plate(200, thickness).rotx(180)
+    bottom = bottom.movez(thickness*2+37).difference(servo)
     CSG wheel = wheel(60, 25, 2).rotx(180).movez(thickness+35)
-    CSG washer = new Cylinder(22.5, 1, 30).toCSG().movez(10)
-    CSG mGear = gear(28, 20, 10, 5).union(washer)
+    
+    CSG mGear = drivenGear(28, 20, 10, 5)
     mGear = mGear.movez(thickness+26).movex(52.5)
 	
 	return [top, bottom, wheel, mGear]
 }
 
-CSG topGuard(int length, int thickness) {
+CSG plate(int length, int thickness) {
     int dist = length/2
     int width = 80
     CSG plate = new Cube(dist*2,width,thickness).toCSG().movez(thickness/2)
@@ -46,6 +48,17 @@ CSG axleNub(double radius, double width, double length, int washerThickness) {
     axleCyl = axleCyl.union(washer)
 
     return axleCyl
+}
+
+CSG drivenGear(int teeth, int radius, int thickness, int toothDepth) {
+	CSG washer = new Cylinder(radius, 1, 30).toCSG().movez(10)
+	CSG mGear = gear(teeth, radius, thickness, toothDepth).union(washer)
+	CSG horn = Vitamins.get("hobbyServoHorn","hv6214mg_6").rotx(180)
+	horn = horn.movez(5)
+	for(int i=0; i<5; i++) {
+		mGear = mGear.difference(horn.movez(3*i))
+	}
+	return mGear
 }
 
 CSG gear(int teeth, int radius, int thickness, int toothDepth) {
